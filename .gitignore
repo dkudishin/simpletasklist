@@ -7,3 +7,6 @@ target/
 *.iws
 *.iml
 *.ipr
+
+### Local DB files
+*.db

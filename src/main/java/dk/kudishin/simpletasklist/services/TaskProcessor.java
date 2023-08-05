@@ -28,7 +28,6 @@ public class TaskProcessor implements TaskService {
     public Task getTaskById(int id) {
         Task task = dao.getTaskById(id);
         if(task == null) {
-            System.out.println("\n\nEXCEPTION\n\n");
             throw new TaskNotFoundException();
         }
         return task;

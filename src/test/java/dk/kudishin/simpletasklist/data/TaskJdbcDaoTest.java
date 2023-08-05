@@ -3,7 +3,8 @@ package dk.kudishin.simpletasklist.data;
 import dk.kudishin.simpletasklist.domain.Task;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -11,7 +12,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
+
+@Import(TaskJdbcDao.class)
+@DataJdbcTest
 class TaskJdbcDaoTest {
 
     @Autowired

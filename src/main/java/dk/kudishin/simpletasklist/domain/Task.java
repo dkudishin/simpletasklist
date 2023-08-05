@@ -53,4 +53,22 @@ public class Task {
                 ", taskDesc='" + taskDesc + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Task task = (Task) o;
+
+        if (id != task.id) return false;
+        return taskDesc.equals(task.taskDesc);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + taskDesc.hashCode();
+        return result;
+    }
 }
