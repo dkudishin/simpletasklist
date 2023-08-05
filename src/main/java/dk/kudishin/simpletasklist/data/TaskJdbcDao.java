@@ -51,10 +51,10 @@ public class TaskJdbcDao implements TaskDao {
     }
 
     @Override
-    public int insertTask(Task t) {
+    public void insertTask(Task t) {
         log.info("Running Spring JDBC query to INSERT");
         String sql = "insert into tasks (taskdesc) values (?)";
-        return jdbcTemplate.update(sql, t.getTaskDesc());
+        jdbcTemplate.update(sql, t.getTaskDesc());
     }
 
     @Override
@@ -65,10 +65,10 @@ public class TaskJdbcDao implements TaskDao {
     }
 
     @Override
-    public int deleteTaskById(int id) {
+    public void deleteTaskById(int id) {
         log.info("Running Spring JDBC query to DELETE");
         String sql = "delete from tasks where id=?";
-        return jdbcTemplate.update(sql, id);
+        jdbcTemplate.update(sql, id);
     }
 
 }

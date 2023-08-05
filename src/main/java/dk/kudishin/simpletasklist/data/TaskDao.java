@@ -10,9 +10,9 @@ public interface TaskDao {
 
     Task getTaskById(int id);
 
-    int insertTask(Task t);
+    void insertTask(Task t);
 
     int updateTask(Task t);
 
-    int deleteTaskById(int id);
+    void deleteTaskById(int id);
 }

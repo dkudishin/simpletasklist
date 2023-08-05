@@ -36,10 +36,9 @@ public class TaskJpaDao implements TaskDao {
     }
 
     @Override
-    public int insertTask(Task t) {
+    public void insertTask(Task t) {
         log.info("Running Spring JPA query to INSERT");
         entityManager.persist(t);
-        return 0;
     }
 
     @Override
@@ -50,10 +49,9 @@ public class TaskJpaDao implements TaskDao {
     }
 
     @Override
-    public int deleteTaskById(int id) {
+    public void deleteTaskById(int id) {
         log.info("Running Spring JPA query to DELETE");
         Task task = entityManager.find(Task.class, id);
         entityManager.remove(task);
-        return 0;
     }
 }

@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="tasks")
@@ -15,7 +17,10 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name = "taskdesc")
+    @NotEmpty(message = "Task description cannot be empty")
+    @Size(min = 3, max = 30, message = "Task description should be 3-30 symbols long")
     private String taskDesc;
 
     public int getId() {

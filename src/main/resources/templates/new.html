@@ -10,9 +10,12 @@
 
 
 <form action="#" th:action="@{/ui/tasks}" th:object="${task}" method="post">
+    <label th:for="*{taskDesc}">Task description</label>
     <input type="text" th:field="*{taskDesc}">
+    <p th:if="${#fields.hasErrors('taskDesc')}" th:errorclass="error" th:errors="*{taskDesc}" />
     <input type="submit" value="Create"/>
 </form>
+
 
 <p>
     <a href="/">Abort and Go To Index</a>

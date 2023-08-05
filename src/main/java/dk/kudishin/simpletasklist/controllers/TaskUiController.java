@@ -2,9 +2,11 @@ package dk.kudishin.simpletasklist.controllers;
 
 import dk.kudishin.simpletasklist.domain.Task;
 import dk.kudishin.simpletasklist.services.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -54,7 +56,10 @@ public class TaskUiController {
     }
 
     @PostMapping("/tasks")
-    public String create(@ModelAttribute Task t) {
+    public String create(@Valid @ModelAttribute Task t, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "new";
+        }
         taskService.createTask(t);
         return "redirect:/ui/tasks";
     }
