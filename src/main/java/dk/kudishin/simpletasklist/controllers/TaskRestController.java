@@ -2,46 +2,54 @@ package dk.kudishin.simpletasklist.controllers;
 
 import dk.kudishin.simpletasklist.domain.Task;
 import dk.kudishin.simpletasklist.services.TaskService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
-@RequestMapping("/tasks")
-public class TaskController {
+@RestController
+@RequestMapping("/rest")
+public class TaskRestController {
 
     private final TaskService taskService;
 
-    public TaskController(TaskService taskService) {
+    public TaskRestController(TaskService taskService) {
         this.taskService = taskService;
     }
 
-    @GetMapping ("/")
-    @ResponseBody
+    @GetMapping ("/tasks")
     public List<Task> getAllTasks() {
         return taskService.getAllTasks();
     }
 
-    @RequestMapping("/task")
-    @ResponseBody
-    public Task loadFirst(@RequestParam("id") int id) {
-        Task task = taskService.getTaskById(id);
-        return task;
+    @RequestMapping("/tasks/{id}")
+    public Task loadOneByPathVariable(@PathVariable int id) {
+        return taskService.getTaskById(id);
     }
 
-    @RequestMapping("/taskui")
-    public String loadFirstUi(@RequestParam("id") int id, Model model) {
-        Task task = taskService.getTaskById(id);
-        model.addAttribute("task", task);
-        return "task";
+    @PostMapping("/tasks")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createNew(@RequestBody Task t) {
+        taskService.createTask(t);
     }
 
-    @RequestMapping("tasks/{id}")
-    public String loadSingleViaPathVariable(@PathVariable int id, Model model) {
-        Task task = taskService.getTaskById(id);
-        model.addAttribute("task", task);
-        return "task";
+    @PutMapping("/tasks/{id}")
+    public void update(@PathVariable int id, @RequestBody Task t) {
+        taskService.updateTask(id, t);
     }
+
+    @DeleteMapping("/tasks/{id}")
+    public void delete(@PathVariable int id) {
+        taskService.deleteById(id);
+    }
+
 }

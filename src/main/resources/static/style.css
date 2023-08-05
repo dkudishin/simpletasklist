@@ -1,0 +1,16 @@
+h1, h2, h3, h4, h5, h6 {
+    color: darkgreen;
+}
+body {
+    background-color: mintcream;
+}
+
+table {
+    border: 1px solid gray;
+    width: 60%;
+}
+
+td {
+    border: 1px solid gray;
+    padding: 10px;
+}

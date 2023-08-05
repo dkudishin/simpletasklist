@@ -1,7 +1,10 @@
-package dk.kudishin.domain;
+package dk.kudishin.simpletasklist.domain;
 
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -10,9 +13,10 @@ import jakarta.persistence.Table;
 public class Task {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String desc;
+    @Column(name = "taskdesc")
+    private String taskDesc;
 
     public int getId() {
         return id;
@@ -22,23 +26,31 @@ public class Task {
         this.id = id;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getTaskDesc() {
+        return taskDesc;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setTaskDesc(String desc) {
+        this.taskDesc = desc;
     }
 
     public Task() {
     }
 
-    public Task(String desc) {
-        this.desc = desc;
+    public Task(String taskDesc) {
+        this.taskDesc = taskDesc;
     }
 
-    public Task(int id, String desc) {
+    public Task(int id, String taskDesc) {
         this.id = id;
-        this.desc = desc;
+        this.taskDesc = taskDesc;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", taskDesc='" + taskDesc + '\'' +
+                '}';
     }
 }

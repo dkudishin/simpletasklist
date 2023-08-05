@@ -1,23 +1,18 @@
-package dk.kudishin.data;
+package dk.kudishin.simpletasklist.data;
 
-import dk.kudishin.domain.Task;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
+import dk.kudishin.simpletasklist.domain.Task;
 
 import java.util.List;
 
-@Repository
-public class TaskDao {
+public interface TaskDao {
 
-    private final JdbcTemplate jdbcTemplate;
+    List<Task> getAllTasks();
 
-    @Autowired
-    public TaskDao(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    Task getTaskById(int id);
 
-    public List<Task> getAllTasks() {
-        return jdbcTemplate.queryForList("select * from tasks", Task.class);
-    }
+    int insertTask(Task t);
+
+    int updateTask(Task t);
+
+    int deleteTaskById(int id);
 }

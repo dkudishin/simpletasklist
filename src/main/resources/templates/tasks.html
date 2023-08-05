@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks - All Tasks</title>
+    <link href="/style.css" rel="stylesheet"/>
+</head>
+<body>
+<h1>All Tasks</h1>
+
+<table>
+<th:block th:each="task: ${tasks}">
+    <tr>
+        <td>
+        <a th:href="@{/ui/tasks/{id}(id=${task.getId()})}">
+            <span th:text="${task.id}"></span>
+            <span th:text="${task.taskDesc}"></span>
+        </a>
+        </td>
+
+        <td>
+        <a th:href="@{/ui/tasks/{id}/edit(id=${task.getId()})}">
+            Edit
+        </a>
+        </td>
+
+        <td>
+        <form th:method="DELETE" th:action="@{/ui/tasks/{id}(id=${task.id})}">
+            <input type="submit" value="Delete">
+        </form>
+        </td>
+    </tr>
+</th:block>
+</table>
+
+<p>
+    <a href="/ui/new">Add</a>
+</p>
+
+<p>
+    <a href="/">Go To Index</a>
+</p>
+
+</body>
+</html>

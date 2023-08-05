@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks - Single Task</title>
+    <link href="/style.css" rel="stylesheet"/>
+</head>
+<body>
+<h1>Single Task</h1>
+
+<p>
+    <span th:text="${task.id}"></span>
+    <span th:text="${task.taskDesc}"></span>
+</p>
+
+<p>
+    <a th:href="@{/ui/tasks/{id}/edit(id=${task.getId()})}">
+        Edit this task
+    </a>
+</p>
+
+<p>
+    <form th:method="DELETE" th:object="${task}" th:action="@{/ui/tasks/{id}(id=${task.getId()})}">
+        <input type="submit" value="Delete">
+    </form>
+</p>
+
+<p>
+    <a href="/">Go To Index</a>
+</p>
+
+</body>
+</html>

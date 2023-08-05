@@ -1,4 +1,4 @@
-package dk.kudishin.simpletasklist;
+package dk.kudishin.simpletasklist.exceptions;
 
 public class TaskNotFoundException extends RuntimeException {
     public TaskNotFoundException() {

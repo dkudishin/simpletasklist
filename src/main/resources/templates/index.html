@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+    <link href="/style.css" rel="stylesheet"/>
+</head>
+<body>
+<h1>My Tasks application - Index</h1>
+<h2>REST</h2>
+<ul>
+    <li>
+        <a href="rest/tasks">REST: Get All Tasks</a>
+    </li>
+    <li>
+        <a href="rest/tasks/1">REST: Load One Task By PathVariable</a>
+    </li>
+</ul>
+
+<h2>UI</h2>
+<ul>
+    <li>
+        <a href="/ui/tasks">UI: Get All Tasks</a>
+    </li>
+    <li>
+        <a href="/ui/task?id=1">UI: Load One Task By Id Param / Model</a>
+    </li>
+    <li>
+        <a href="/ui/tasks/999">UI: Load One Task By PathVariable / Model</a>
+    </li>
+    <li>
+        <a href="/ui/new">UI: Create a New Task via UI</a>
+    </li>
+</ul>
+</body>
+</html>
