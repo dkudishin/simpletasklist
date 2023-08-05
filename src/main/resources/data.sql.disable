@@ -1,0 +1,3 @@
+INSERT INTO TASKS (TASKDESC) VALUES ('Learn Spring Data JDBC');
+INSERT INTO TASKS (TASKDESC) VALUES ('Learn Spring Data JPA');
+-- select * from tasks;
