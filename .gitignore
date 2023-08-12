@@ -2,11 +2,14 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### IntelliJ IDEA ###
+## IntelliJ IDEA
 .idea
 *.iws
 *.iml
 *.ipr
 
-### Local DB files
+## Local DB files
 *.db
+
+## Logs
+*.log
