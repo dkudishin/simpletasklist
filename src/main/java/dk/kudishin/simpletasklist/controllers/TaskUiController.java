@@ -72,8 +72,8 @@ public class TaskUiController {
     }
 
     @PutMapping("/tasks/{id}")
-    public String doEdit(@ModelAttribute Task t, @PathVariable int id) {
-        taskService.updateTask(t.getId(), t);
+    public String doEdit(@ModelAttribute Task t) {
+        taskService.updateTask(t);
         return "redirect:/ui/tasks";
     }
 
