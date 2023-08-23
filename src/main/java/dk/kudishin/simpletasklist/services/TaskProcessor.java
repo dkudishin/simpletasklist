@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Transactional
 public class TaskProcessor implements TaskService {
 
     private final TaskDao dao;
@@ -39,8 +38,7 @@ public class TaskProcessor implements TaskService {
     }
 
     @Override
-    public void updateTask(int id, Task t) {
-        t.setId(id);
+    public void updateTask(Task t) {
         dao.updateTask(t);
     }
 

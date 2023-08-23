@@ -12,7 +12,7 @@ public interface TaskService {
 
     void createTask(Task t);
 
-    void updateTask(int id, Task t);
+    void updateTask( Task t);
 
     void deleteById(int id);
 }

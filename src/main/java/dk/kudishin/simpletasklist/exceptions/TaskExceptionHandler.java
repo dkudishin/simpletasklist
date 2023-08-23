@@ -11,7 +11,6 @@ public class TaskExceptionHandler {
     @ExceptionHandler
     public String intercept(TaskNotFoundException e,
                             HttpServletRequest request,
-
                             Model model) {
         model.addAttribute("e", e);
         return "error";
