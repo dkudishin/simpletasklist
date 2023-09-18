@@ -16,7 +16,7 @@ import java.util.List;
 @Qualifier("JPA")
 public class TaskJpaDao implements TaskDao {
 
-    private Logger log = LoggerFactory.getLogger(TaskJpaDao.class);
+    private final Logger log = LoggerFactory.getLogger(TaskJpaDao.class);
 
     @PersistenceContext
     private EntityManager entityManager;

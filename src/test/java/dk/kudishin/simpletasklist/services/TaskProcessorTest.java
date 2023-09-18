@@ -25,7 +25,7 @@ class TaskProcessorTest {
         TaskProcessor taskProcessor = new TaskProcessor(taskDao);
         when(taskDao.getAllTasks())
                 .thenReturn(Collections.emptyList());
-        List<Task> allTasks = taskProcessor.getAllTasks();
+        List<Task> allTasks = taskProcessor.getAll();
         assertEquals(0, allTasks.size());
     }
 }

@@ -33,7 +33,7 @@ class TaskProcessorSpringTest {
     void getAllTasks() {
         when(taskDao.getAllTasks())
                 .thenReturn(Collections.emptyList());
-        List<Task> allTasks = taskProcessor.getAllTasks();
+        List<Task> allTasks = taskProcessor.getAll();
         assertEquals(0, allTasks.size());
     }
 }

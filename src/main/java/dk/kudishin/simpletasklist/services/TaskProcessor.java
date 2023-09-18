@@ -3,7 +3,6 @@ package dk.kudishin.simpletasklist.services;
 import dk.kudishin.simpletasklist.data.TaskDao;
 import dk.kudishin.simpletasklist.exceptions.TaskNotFoundException;
 import dk.kudishin.simpletasklist.domain.Task;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +18,12 @@ public class TaskProcessor implements TaskService {
         this.dao = dao;
     }
 
-    public List<Task> getAllTasks() {
+    public List<Task> getAll() {
         return dao.getAllTasks();
     }
 
     @Override
-    public Task getTaskById(int id) {
+    public Task getById(int id) {
         Task task = dao.getTaskById(id);
         if(task == null) {
             throw new TaskNotFoundException();
@@ -33,12 +32,12 @@ public class TaskProcessor implements TaskService {
     }
 
     @Override
-    public void createTask(Task t) {
+    public void create(Task t) {
         dao.insertTask(t);
     }
 
     @Override
-    public void updateTask(Task t) {
+    public void update(Task t) {
         dao.updateTask(t);
     }
 

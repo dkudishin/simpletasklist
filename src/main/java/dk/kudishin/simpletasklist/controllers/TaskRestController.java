@@ -2,7 +2,6 @@ package dk.kudishin.simpletasklist.controllers;
 
 import dk.kudishin.simpletasklist.domain.Task;
 import dk.kudishin.simpletasklist.services.TaskService;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,23 +27,23 @@ public class TaskRestController {
 
     @GetMapping ("/tasks")
     public List<Task> getAllTasks() {
-        return taskService.getAllTasks();
+        return taskService.getAll();
     }
 
     @RequestMapping("/tasks/{id}")
     public Task loadOneByPathVariable(@PathVariable int id) {
-        return taskService.getTaskById(id);
+        return taskService.getById(id);
     }
 
     @PostMapping("/tasks")
     @ResponseStatus(HttpStatus.CREATED)
     public void createNew(@RequestBody Task t) {
-        taskService.createTask(t);
+        taskService.create(t);
     }
 
     @PutMapping("/tasks/{id}")
     public void update(@RequestBody Task t) {
-        taskService.updateTask(t);
+        taskService.update(t);
     }
 
     @DeleteMapping("/tasks/{id}")

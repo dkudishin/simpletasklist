@@ -3,7 +3,6 @@ package dk.kudishin.simpletasklist.controllers;
 import dk.kudishin.simpletasklist.domain.Task;
 import dk.kudishin.simpletasklist.services.TaskService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,21 +30,21 @@ public class TaskUiController {
 
     @GetMapping("/tasks")
     public String loadAll(Model model) {
-        List<Task> tasks = taskService.getAllTasks();
+        List<Task> tasks = taskService.getAll();
         model.addAttribute("tasks", tasks);
         return "tasks";
     }
 
     @GetMapping("/task")
     public String loadFirstUi(@RequestParam("id") int id, Model model) {
-        Task task = taskService.getTaskById(id);
+        Task task = taskService.getById(id);
         model.addAttribute("task", task);
         return "task";
     }
 
     @GetMapping("/tasks/{id}")
     public String loadSingleViaPathVariable(@PathVariable int id, Model model) {
-        Task task = taskService.getTaskById(id);
+        Task task = taskService.getById(id);
         model.addAttribute("task", task);
         return "task";
     }
@@ -60,20 +59,20 @@ public class TaskUiController {
         if (bindingResult.hasErrors()) {
             return "new";
         }
-        taskService.createTask(t);
+        taskService.create(t);
         return "redirect:/ui/tasks";
     }
 
     @GetMapping("/tasks/{id}/edit")
     public String edit(@PathVariable int id, Model model) {
-        Task task = taskService.getTaskById(id);
+        Task task = taskService.getById(id);
         model.addAttribute("task", task);
         return "edit";
     }
 
     @PutMapping("/tasks/{id}")
     public String doEdit(@ModelAttribute Task t) {
-        taskService.updateTask(t);
+        taskService.update(t);
         return "redirect:/ui/tasks";
     }
 
